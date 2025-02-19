@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     parcours.setPoints( listeGeoPoints );
                     map.invalidate();
                     // Calcul de la nouvelle distance en m
-                    tvDistance.setText("Distance en m : " + calculDistanceParcours());
+                    tvDistance.setText(" Longueur en m : " + calculDistanceParcours());
                 }
                 return true;
             }
@@ -122,14 +122,14 @@ public class MainActivity extends AppCompatActivity {
         map.invalidate();
     }
 
-    private double calculDistanceParcours() {
+    private int calculDistanceParcours() {
         double distance = 0.0;
         GeoPoint dernierPoint = listeGeoPoints.get(0);
         for( GeoPoint p : listeGeoPoints ) {
             distance += dernierPoint.distanceToAsDouble( p );
             dernierPoint = p;
         }
-        return distance;
+        return Math.round( new Float( distance ));
     }
 
 }
